@@ -26,8 +26,7 @@ class QuestionController {
         questions.insert(temporary, at: index)
     }
     
-    func delete(question:Question){
-        guard let index = questions.index(of: question) else {return}
+    func delete(index: Int){
         questions.remove(at: index)
     }
     

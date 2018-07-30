@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="91" id="izu-US-Wa6">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="91" id="izu-US-Wa6" customClass="QuestionTableViewCell" customModule="Q_and_A" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="izu-US-Wa6" id="did-NM-98X">
@@ -66,8 +66,8 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCQ-kI-yln">
-                                                    <rect key="frame" x="0.0" y="57" width="42" height="17.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="57" width="43.5" height="17.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -82,6 +82,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="askerLabel" destination="jTj-HI-sxA" id="Vyy-mW-o0j"/>
+                                    <outlet property="questionLabel" destination="Ibl-Hi-7Dy" id="qyT-0k-9JG"/>
+                                    <outlet property="statusLabel" destination="yCQ-kI-yln" id="THu-11-XFJ"/>
                                     <segue destination="kJI-eo-gof" kind="show" identifier="ListToAnswer" id="c1B-4F-YN8"/>
                                 </connections>
                             </tableViewCell>
@@ -158,7 +161,7 @@
         <!--Title-->
         <scene sceneID="Gd2-Y2-BcF">
             <objects>
-                <viewController id="kJI-eo-gof" sceneMemberID="viewController">
+                <viewController id="kJI-eo-gof" customClass="AnswerViewController" customModule="Q_and_A" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CLs-92-DYw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,8 +181,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epg-vK-upg">
-                                        <rect key="frame" x="0.0" y="57" width="25" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answerer's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epg-vK-upg">
+                                        <rect key="frame" x="0.0" y="57" width="134" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -204,8 +207,17 @@
                         <viewLayoutGuide key="safeArea" id="Yhk-sp-E4f"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="fl1-Mu-6xd">
-                        <barButtonItem key="rightBarButtonItem" title="Submit Answer" id="mPu-c0-eF3"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit Answer" id="mPu-c0-eF3">
+                            <connections>
+                                <action selector="submitAnswer:" destination="kJI-eo-gof" id="5Hg-Q9-qnl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="answerInput" destination="bzK-lu-lJ3" id="Mpn-W9-UdB"/>
+                        <outlet property="askerLabel" destination="VHY-rU-94f" id="4xI-12-fmH"/>
+                        <outlet property="questionLabel" destination="vVY-oM-wRs" id="1QT-M1-b7b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QrN-gp-cOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
