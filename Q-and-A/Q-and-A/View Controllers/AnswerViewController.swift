@@ -2,7 +2,7 @@
 //  AnswerViewController.swift
 //  Q-and-A
 //
-//  Created by Andrew Dhan on 7/30/18.
+//  Created by Andrew Liao on 7/30/18.
 //  Copyright © 2018 Andrew Liao. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ class AnswerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
         // Do any additional setup after loading the view.
     }
     
@@ -21,14 +21,29 @@ class AnswerViewController: UIViewController {
             let answer = answerInput.text,
             let question = question else {return }
         
-        questionLabel.text = question.question
-        askerLabel.text = question.asker
+        
         if name != "" && answer != ""{
             questionController?.update(question: question, withAnswer: answer, answeredBy: name)
             
         }
-        
+        navigationController?.popViewController(animated: true)
     }
+    
+    func updateViews(){
+        guard let question = question else {
+            
+            fatalError("NO QUESTION!!")}
+        
+        self.title = question.question
+        questionLabel.text = question.question
+        askerLabel.text = question.asker
+        
+        if(question.answer != nil){
+            nameInput.text = question.answerer
+            answerInput.text = question.answer
+        }
+    }
+    
     
     //MARK: - Properties
     @IBOutlet weak var questionLabel: UILabel!

@@ -20,7 +20,7 @@ class QuestionTableViewCell: UITableViewCell {
         guard let question = question else {return}
         questionLabel.text = question.question
         askerLabel.text = question.asker
-        let status = question.answer != nil ? "Can you answer this?" : "Tap to view answer"
+        let status = question.answer == nil ? "Can you answer this?" : "Tap to view answer"
         
         statusLabel.text = status
     }

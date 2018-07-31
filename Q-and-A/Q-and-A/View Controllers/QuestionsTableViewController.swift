@@ -2,7 +2,7 @@
 //  QuestionsTableViewController.swift
 //  Q-and-A
 //
-//  Created by Andrew Dhan on 7/30/18.
+//  Created by Andrew Liao on 7/30/18.
 //  Copyright © 2018 Andrew Liao. All rights reserved.
 //
 
@@ -47,9 +47,11 @@ class QuestionsTableViewController: UITableViewController, QuestionTableViewCell
             guard let askVC = segue.destination as? AskQuestionViewController else {return}
             askVC.questionController = questionController
         } else if segue.identifier == "ListToAnswer"{
-            guard let answerVC = segue.destination as? AnswerViewController else {return}
+            guard let answerVC = segue.destination as? AnswerViewController,
+            let indexPath = tableView.indexPathForSelectedRow else {return}
+            
             answerVC.questionController = questionController
-            answerVC.question = question
+            answerVC.question = questionController.questions[indexPath.row]
         }
     }
     

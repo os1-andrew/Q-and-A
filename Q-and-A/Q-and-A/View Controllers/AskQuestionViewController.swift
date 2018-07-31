@@ -2,7 +2,7 @@
 //  AskQuestionViewController.swift
 //  Q-and-A
 //
-//  Created by Andrew Dhan on 7/30/18.
+//  Created by Andrew Liao on 7/30/18.
 //  Copyright © 2018 Andrew Liao. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ class AskQuestionViewController: UIViewController {
         if(name != "" && question != ""){
             questionController?.create(question: question, askedBy: name)
         }
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     
